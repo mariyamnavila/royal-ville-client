@@ -95,14 +95,14 @@ const Navbar = () => {
                         ) : ( */}
                     <div className='lg:block hidden '>
                         <Link to={'/register'}>
-                            <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-white mr-3">
+                            <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-white mr-3">
                                 <span className="
                                     absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-300 "></span>
                                 <span className="relative z-10">Register</span>
                             </button>
                         </Link>
                         <Link to={'/login'}>
-                            <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-white">
+                            <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-white">
                                 <span className="
                                     absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-250"></span>
                                 <span className="relative z-10">Login</span>

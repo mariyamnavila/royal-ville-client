@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div className="bg-[#1D1B1B]">
             <div className="max-w-7xl mx-auto">
-                <div className="text-white text-center pt-24 pb-16 text-6xl md:text-7xl">
+                <div className="text-white text-center pt-24 pb-16 text-6xl md:text-7xl elegant">
                     <h1>Book Your Dream Stay.</h1>
                     <h1>In Royal Ville</h1>
                 </div>
