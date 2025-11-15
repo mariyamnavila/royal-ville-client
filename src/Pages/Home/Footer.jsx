@@ -1,4 +1,4 @@
-import { CiFacebook, CiInstagram, CiTwitter } from 'react-icons/ci';
+import { CiFacebook, CiInstagram, CiLocationArrow1, CiTwitter } from 'react-icons/ci';
 import logo from '../../assets/royal-ville-logo.png';
 import { FaDribbble, FaYoutube } from 'react-icons/fa';
 
@@ -15,15 +15,15 @@ const Footer = () => {
                         <h4 className="text-4xl text-white">Get news & update <br /> about us today</h4>
                         <div className="grid grid-cols-3 gap-1.5 mt-7 mb-4">
                             <input type="text" placeholder="Email..." className="input col-span-2 w-full py-7" />
-                            <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-black mr-3 py-7">
+                            <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-black mr-3 py-7 ">
                                 <span className="
                                     absolute inset-0 bg-[#FAF7F2] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-400 "></span>
-                                <span className="relative z-10">Sign Up</span>
+                                <span className="relative z-10 flex items-center">Sign Up <CiLocationArrow1  className='ml-2 font-bold'/></span>
                             </button>
                         </div>
                         <p className="text-white">By subscribing, you’re accept <span className="link text-[#D6A23F] hover:text-white transition duration-500 ease-in-out">Privacy Policy</span></p>
                     </div>
-                    <div className="md:col-span-1 col-span-3 text-white pt-10 ml-4 pb-16">
+                    <div className="lg:col-span-1 col-span-3 text-white pt-10 ml-4 pb-16">
                         <h4 className="text-2xl mb-7">Our Division</h4>
                         <div className="space-y-3">
                             <p className="text-white hover:text-[#D6A23F] hover:link transition duration-500 ease-in-out">Store Directory</p>
@@ -34,7 +34,7 @@ const Footer = () => {
                             <p className="text-white hover:text-[#D6A23F] hover:link transition duration-500 ease-in-out">Knowledge Center</p>
                         </div>
                     </div>
-                    <div className="md:col-span-1 col-span-3 text-white pt-10 ml-4">
+                    <div className="lg:col-span-1 col-span-3 text-white pt-10 ml-4">
                         <h4 className="text-2xl mb-7">My account</h4>
                         <div className="space-y-3">
                             <p className="text-white hover:text-[#D6A23F] hover:link transition duration-500 ease-in-out">Contact Us</p>
@@ -44,7 +44,7 @@ const Footer = () => {
                             <p className="text-white hover:text-[#D6A23F] hover:link transition duration-500 ease-in-out">Support 24/7</p>
                         </div>
                     </div>
-                    <div className="md:col-span-1 col-span-3 text-white pt-10 ml-4">
+                    <div className="lg:col-span-1 col-span-3 text-white pt-10 ml-4">
                         <h4 className="text-2xl mb-7">Service</h4>
                         <div className="space-y-3">
                             <p className="text-white hover:text-[#D6A23F] hover:link transition duration-500 ease-in-out">Request a Freight</p>
@@ -59,7 +59,7 @@ const Footer = () => {
                 <div>
                     <footer className="footer sm:footer-horizontal text-neutral-content items-center p-4">
                         <aside className="grid-flow-col items-center">
-                            <img className='bg-white p-2 w-[150px] ml-2' src={logo} alt="" />
+                            <img className='bg-white p-2 w-[150px] ml-2 mt-3' src={logo} alt="" />
                         </aside>
                         <div className="flex text-2xl gap-7">
                             <CiFacebook className='text-white hover:text-[#D6A23F] hover:link transition duration-500 ease-in-out '/>
