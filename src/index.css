@@ -10,8 +10,8 @@
   /* --color-base-100: #f4f9f7; */
   --color-base-200: #BFBFBF;
    --color-base-300: #8c8c8c;
-  /* --color-info: #64a287;
-  --color-neutral: #628974;*/
+  /* --color-info: #64a287;*/
+  --color-neutral: #1A1A1A; 
   --color-accent: #D32F2F;
   --color-success: #FAF7F2; 
 }
@@ -23,6 +23,7 @@
 body{
   font-family: "Poppins", sans-serif;
   font-style: normal;
+  background-color: #FAF7F2;
 }
 
 .elegant{

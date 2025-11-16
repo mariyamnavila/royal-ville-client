@@ -1,5 +1,5 @@
 import Banner from "./Banner";
-import Navbar from "./Navbar";
+import Places from "./Places";
 import Select from "./Select";
 
 const Home = () => {
@@ -7,6 +7,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Select></Select>
+            <Places></Places>
         </div>
     );
 };
