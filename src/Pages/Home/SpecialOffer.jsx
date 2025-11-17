@@ -3,7 +3,7 @@ import offer1 from '../../assets/offer1.jpg';
 import offer2 from '../../assets/offer2.jpg';
 import offer3 from '../../assets/offer3.jpg';
 
-import { easeIn, motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from 'react';
 
 const SpecialOffer = () => {
@@ -18,13 +18,13 @@ const SpecialOffer = () => {
 
     useEffect(() => {
         if (window.innerWidth >= 1024) {
-        if (isInView) {
-            controls.start("animate");
-        } else {
-            controls.start("initial");  // re-animate when scrolling back
+            if (isInView) {
+                controls.start("animate");
+            } else {
+                controls.start("initial");  // re-animate when scrolling back
+            }
         }
-        }
-    }, [isInView,controls])
+    }, [isInView, controls])
 
     const divVariants = {
         initial: {

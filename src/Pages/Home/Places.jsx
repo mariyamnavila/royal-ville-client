@@ -21,7 +21,7 @@ const Places = () => {
                 controls.start("initial");  // re-animate when scrolling back
             }
         }
-    }, [isInView])
+    }, [isInView, controls])
 
     const cardVariants = {
         initial: (i) => ({
