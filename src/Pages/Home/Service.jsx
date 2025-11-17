@@ -2,7 +2,7 @@
 
 const Service = () => {
     return (
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center mt-20 border-b border-gray-500 space-y-6">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center mt-20 border-b border-gray-300 space-y-6">
             <div className="space-y-2.5 ml-7 lg:w-4/5">
                 <p className="text-primary text-xl">Driven by Service, Inspired by You</p>
                 <h3 className="text-neutral text-5xl elegant font-bold ">We Don’t Just Manage Rooms – We Tell Jokes, Drink Coffee, And Dance When No One’s Watching!</h3>
