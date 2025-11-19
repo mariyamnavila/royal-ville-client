@@ -8,7 +8,7 @@ const Reasons = () => {
         <div className='max-w-7xl mx-auto flex flex-col lg:flex-row justify-between'>
             <div className='relative flex ml-7 '>
                 <img className='mb-12 w-[200px] md:w-fit mt-5' src={reason1} alt="" />
-                <img className='absolute w-[200px] md:w-fit top-10 right-6 md:top-16 md:right-20 lg:top-32 lg:-right-30' src={reason2} alt="" />
+                <img className='absolute w-[200px] md:w-fit top-10 right-6 md:top-16 md:right-20 lg:top-36 lg:-right-30' src={reason2} alt="" />
             </div>
             <div className="space-y-3 lg:w-1/2 mx-7">
                 <p className="text-primary text-xl">Sleep in Style and Serenity</p>
@@ -21,7 +21,6 @@ const Reasons = () => {
                         {reason}
                     </div>)
                     }
-                    
                 </div>
             </div>
         </div>
