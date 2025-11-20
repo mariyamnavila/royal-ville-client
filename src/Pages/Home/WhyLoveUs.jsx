@@ -52,27 +52,6 @@ const WhyLoveUs = () => {
         );
     }
 
-    // const { scrollY } = useScroll({
-    //     target: targetRef,
-    //     offset: ['start start', 'end end']
-    // })
-
-    // const contentHeight = 4190
-
-    // const cardTimeline = arrayOfCardInfo.map((_, i) => {
-    //     const start = contentHeight + i * size.height + 40
-    //     const end = contentHeight + (i + 1) * size.height
-
-    //     return [start, end]
-    // })
-
-    // const timeline = [[contentHeight, 4330], ...cardTimeline]
-
-    // const animation = timeline.map(([start, end]) => ({
-    //     scale: useTransform(scrollY, [start, end], [1, 0.8]),
-    //     opacity: useTransform(scrollY, [start, end], [1, 0]),
-    // }));
-
     const { scrollYProgress } = useScroll({
         target: targetRef,
         offset: ["start start", "end end"],
@@ -95,7 +74,6 @@ const WhyLoveUs = () => {
         [1, 0]
     );
 
-    // Card animation timeline (auto-generated)
     const cardAnimations = arrayOfCardInfo.map((_, i) => {
         const start = (headerHeight + i * cardScroll) /
             (headerHeight + cardScroll * arrayOfCardInfo.length - 100);
@@ -123,20 +101,21 @@ const WhyLoveUs = () => {
                 <h3 className="text-neutral text-5xl elegant font-bold">Why Travelers Love Us</h3>
             </motion.div>
             <div className='flex flex-col mt-14 relative'>
-                {
-                    arrayOfCardInfo.map((card, i) =>
+                {arrayOfCardInfo.map((card, i) => {
+                    const isLast = i === arrayOfCardInfo.length - 1;
+                    return (
                         <motion.div
                             key={i}
-                            className="sticky top-0"
+                            className="sticky top-20 h-[400px] flex justify-center"
                             style={{
-                                scale: cardAnimations[i].scale,
-                                opacity: cardAnimations[i].opacity,
+                                scale: isLast ? 1 : cardAnimations[i].scale,   
+                                opacity: cardAnimations[i].opacity,            
                             }}
                         >
                             <WhyLoveUsCard card={card} />
                         </motion.div>
-                    )
-                }
+                    );
+                })}
             </div>
         </div>
     );

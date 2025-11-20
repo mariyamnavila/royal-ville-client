@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Journal from "./Journal";
 import Newsletter from "./Newsletter";
 import Places from "./Places";
 import Reasons from "./Reasons";
@@ -20,6 +21,7 @@ const Home = () => {
             <Reasons></Reasons>
             <Newsletter></Newsletter>
             <WhyLoveUs></WhyLoveUs>
+            <Journal></Journal>
         </div>
     );
 };
