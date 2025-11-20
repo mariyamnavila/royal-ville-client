@@ -6,6 +6,8 @@ import playArea from '../../assets/playArea.jpg';
 
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+import AnimatedTextSimple from '../../Components/AnimatedTextSimple';
+import AnimatedText from '../../Components/AnimatedText';
 
 const Places = () => {
 
@@ -56,8 +58,12 @@ const Places = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="text-center space-y-2.5">
-                <p className="text-primary text-xl">Moments That Make Memories</p>
-                <h3 className="text-neutral text-5xl md:w-4/5 mx-auto elegant font-bold">We're Dedicated To Providing You Unforgettable Experience. Whether You're Here For Business Or Leisure.</h3>
+                <p className="text-primary text-xl"><AnimatedTextSimple>Moments That Make Memories</AnimatedTextSimple></p>
+                <AnimatedText
+                text={"We're Dedicated To Providing You Unforgettable Experience. Whether You're Here For Business Or Leisure."}
+                className="text-neutral text-5xl md:w-2/3 mx-auto elegant font-bold"
+                />
+                {/* <h3 className="text-neutral text-5xl md:w-4/5 mx-auto elegant font-bold">We're Dedicated To Providing You Unforgettable Experience. Whether You're Here For Business Or Leisure.</h3> */}
             </div>
             <div
                 ref={ref}

@@ -1,14 +1,21 @@
 import { CiFacebook, CiInstagram, CiLocationArrow1, CiTwitter } from 'react-icons/ci';
 import logo from '../../assets/royal-ville-logo.png';
 import { FaDribbble, FaYoutube } from 'react-icons/fa';
+import AnimatedText from '../../Components/AnimatedText';
 
 const Footer = () => {
     return (
         <div className="bg-[#1D1B1B]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-white text-center pt-24 pb-16 text-6xl md:text-7xl elegant">
-                    <h1>Book Your Dream Stay.</h1>
-                    <h1>In Royal Ville</h1>
+                    <AnimatedText
+                    text={'Book Your Dream Stay.'}
+                    />
+                    <AnimatedText
+                    text={'In Royal Ville'}
+                    />
+                    {/* <h1></h1>
+                    <h1></h1> */}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-6  gap-7 border-y border-[#25262a]">
                     <div className="col-span-3 pr-0 md:pr-16 border-r border-[#25262a] pt-10">

@@ -2,9 +2,10 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import offer1 from '../../assets/offer1.jpg';
 import offer2 from '../../assets/offer2.jpg';
 import offer3 from '../../assets/offer3.jpg';
-
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from 'react';
+import AnimatedTextSimple from '../../Components/AnimatedTextSimple';
+import AnimatedText from '../../Components/AnimatedText';
 
 const SpecialOffer = () => {
 
@@ -84,8 +85,12 @@ const SpecialOffer = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="pl-7 space-y-2.5 pb-10 bg-success">
-                <p className="text-primary text-xl">Committed to Excellence</p>
-                <h3 className="text-neutral text-5xl elegant font-bold">Get Our Special Offer</h3>
+                <p className="text-primary text-xl"><AnimatedTextSimple>Committed to Excellence</AnimatedTextSimple></p>
+                <AnimatedText
+                    text={"Get Our Special Offer"}
+                    className="text-neutral text-5xl elegant font-bold"
+                />
+                {/* <h3 ></h3> */}
             </div>
             <dialog id="my_modal_2" className="modal">
                 <div className="modal-box">

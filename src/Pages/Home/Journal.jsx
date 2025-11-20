@@ -4,8 +4,17 @@ import journal1 from '../../assets/newsletterBg.jpg';
 import journal2 from '../../assets/Reason1.jpg';
 import journal3 from '../../assets/Reason2.jpg';
 import { GoArrowRight } from "react-icons/go";
+// import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import AnimatedTextSimple from "../../Components/AnimatedTextSimple";
 
+
+const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { opacity: 1, y: 0 },
+};
 const Journal = () => {
+
     return (
         <div>
             <div >
@@ -19,7 +28,9 @@ const Journal = () => {
             <div className="bg-[#f8eeda] py-20">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center space-y-6">
                     <div className="space-y-2.5 md:w-4/5">
-                        <p className="text-primary text-xl">our Guide to Luxury Travel</p>
+                        <p className="text-primary text-xl">
+                            <AnimatedTextSimple yOffset={40}>Our Guide to Luxury Travel</AnimatedTextSimple>
+                        </p>
                         <h3 className="text-neutral text-5xl elegant font-bold ">From Our Journal: Travel Tips, Stories & More</h3>
                     </div>
                     <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-black mr-3 py-7 px-7 hover:text-success">
@@ -28,8 +39,15 @@ const Journal = () => {
                     </button>
                 </div>
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
-                    {/* grid-1 */}
-                    <div className="col-span-2 row-span-4 border border-primary rounded-xl p-7">
+                    {/* card-1 */}
+                    <motion.div
+                        className="col-span-2 row-span-4 border border-primary rounded-xl p-7"
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    >
                         <div>
                             <div className="flex gap-3 text-xs items-center">
                                 <p className="bg-primary px-4 py-1 rounded-full font-medium text-[14px]">02 Apr 2021</p>
@@ -48,9 +66,16 @@ const Journal = () => {
                         <div className=" overflow-hidden rounded-xl mt-5">
                             <img className="w-full lg:h-[300px] hover:scale-115 transform transition duration-300 object-cover" src={journal1} alt="" />
                         </div>
-                    </div>
-                    {/* grid-2 */}
-                    <div className="col-span-2 row-span-2 border border-primary rounded-xl px-7 py-7  flex flex-col md:flex-row items-center gap-4">
+                    </motion.div>
+                    {/* card-2 */}
+                    <motion.div
+                        className="col-span-2 row-span-2 border border-primary rounded-xl px-7 py-7  flex flex-col md:flex-row items-center gap-4"
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.45 }}
+                    >
                         <div className=" overflow-hidden rounded-xl">
                             <img className="h-fit md:h-full w-full md:w-[300px] hover:scale-115 transform transition duration-300 object-cover" src={journal2} alt="" />
                         </div>
@@ -69,9 +94,16 @@ const Journal = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {/* grid-3 */}
-                    <div className="col-span-2 row-span-2 border border-primary rounded-xl px-7 py-7 flex flex-col md:flex-row items-center gap-4">
+                    </motion.div>
+                    {/* card-3 */}
+                    <motion.div
+                        className="col-span-2 row-span-2 border border-primary rounded-xl px-7 py-7 flex flex-col md:flex-row items-center gap-4"
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+                    >
                         <div className=" overflow-hidden rounded-xl">
                             <img className="h-fit md:h-full w-full md:w-[300px] hover:scale-115 transform transition duration-300 object-cover" src={journal3} alt="" />
                         </div>
@@ -90,7 +122,7 @@ const Journal = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>
