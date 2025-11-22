@@ -85,7 +85,7 @@ const SpecialOffer = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="pl-7 space-y-2.5 pb-10 bg-success">
-                <p className="text-primary text-xl"><AnimatedTextSimple>Committed to Excellence</AnimatedTextSimple></p>
+                <div className="text-primary text-xl"><AnimatedTextSimple>Committed to Excellence</AnimatedTextSimple></div>
                 <AnimatedText
                     text={"Get Our Special Offer"}
                     className="text-neutral text-5xl elegant font-bold"

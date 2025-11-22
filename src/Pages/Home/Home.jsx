@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import Journal from "./Journal";
+import Map from "./Map";
 import Newsletter from "./Newsletter";
 import Places from "./Places";
 import Reasons from "./Reasons";
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner></Banner>
             <Select></Select>
             <Places></Places>
+            <Map></Map>
             <SpecialOffer></SpecialOffer>
             <Service></Service>
             <Stats></Stats>

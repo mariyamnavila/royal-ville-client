@@ -6,11 +6,11 @@ const Service = () => {
     return (
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center mt-20 border-b border-gray-300 space-y-6">
             <div className="space-y-2.5 ml-7 lg:w-4/5">
-                <p className="text-primary text-xl"><AnimatedTextSimple>Driven by Service, Inspired by You</AnimatedTextSimple></p>
+                <div className="text-primary text-xl"><AnimatedTextSimple>Driven by Service, Inspired by You</AnimatedTextSimple></div>
                 <AnimatedText
                     text={"We Don’t Just Manage Rooms – We Tell Jokes, Drink Coffee, And Dance When No One’s Watching!"}
                     className="text-neutral text-5xl elegant font-bold "
-                    wordStagger={0.5}
+                    wordStagger={0.3}
                 />
                 <h3 ></h3>
             </div>

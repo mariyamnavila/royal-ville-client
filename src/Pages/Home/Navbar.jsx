@@ -7,7 +7,7 @@ import { toast } from "sonner";
 const Navbar = () => {
 
     const { user, logOut, setLoading } = use(AuthContext)
-    console.log(user?.photoURL);
+    // console.log(user?.photoURL);
     const links = <>
         <li><NavLink to={'/'} className={'font-semibold text-[18px]'}>Home</NavLink></li>
         <li><NavLink to={'/allRecipes'} className={'font-semibold text-[18px]'}>All Rooms</NavLink></li>
@@ -27,10 +27,10 @@ const Navbar = () => {
         logOut()
             .then((result) => {
                 toast.success('User successfully logged out')
-                console.log(result);
+                // console.log(result);
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
             })
             .finally(() => setLoading(false))
     }

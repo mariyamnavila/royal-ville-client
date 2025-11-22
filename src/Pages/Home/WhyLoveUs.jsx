@@ -74,21 +74,21 @@ const WhyLoveUs = () => {
         [1, 0]
     );
 
-    const cardAnimations = arrayOfCardInfo.map((_, i) => {
-        const start = (headerHeight + i * cardScroll) /
-            (headerHeight + cardScroll * arrayOfCardInfo.length - 100);
+    // const cardAnimations = arrayOfCardInfo.map((_, i) => {
+    //     const start = (headerHeight + i * cardScroll) /
+    //         (headerHeight + cardScroll * arrayOfCardInfo.length - 100);
 
-        const end = (headerHeight + (i + 1) * cardScroll) /
-            (headerHeight + cardScroll * arrayOfCardInfo.length - 100);
+    //     const end = (headerHeight + (i + 1) * cardScroll) /
+    //         (headerHeight + cardScroll * arrayOfCardInfo.length - 100);
 
-        return {
-            scale: useTransform(scrollYProgress, [start, end], [1, 0.85]),
-            opacity:
-                i === arrayOfCardInfo.length - 1
-                    ? useTransform(scrollYProgress, [start, end], [0, 1])
-                    : useTransform(scrollYProgress, [start, end], [1, 0]),
-        };
-    });
+    //     return {
+    //         scale: useTransform(scrollYProgress, [start, end], [1, 0.85]),
+    //         opacity:
+    //             i === arrayOfCardInfo.length - 1
+    //                 ? useTransform(scrollYProgress, [start, end], [0, 1])
+    //                 : useTransform(scrollYProgress, [start, end], [1, 0]),
+    //     };
+    // });
 
 
     return (
@@ -102,18 +102,18 @@ const WhyLoveUs = () => {
             </motion.div>
             <div className='flex flex-col mt-14 relative'>
                 {arrayOfCardInfo.map((card, i) => {
-                    const isLast = i === arrayOfCardInfo.length - 1;
+                    // const isLast = i === arrayOfCardInfo.length - 1;
                     return (
-                        <motion.div
+                        <div
                             key={i}
                             className="sticky top-20 h-[400px] flex justify-center"
-                            style={{
-                                scale: isLast ? 1 : cardAnimations[i].scale,   
-                                opacity: cardAnimations[i].opacity,            
-                            }}
+                            // style={{
+                            //     scale: isLast ? 1 : cardAnimations[i].scale,   
+                            //     opacity: cardAnimations[i].opacity,            
+                            // }}
                         >
                             <WhyLoveUsCard card={card} />
-                        </motion.div>
+                        </div>
                     );
                 })}
             </div>

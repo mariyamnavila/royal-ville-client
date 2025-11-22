@@ -13,7 +13,7 @@ const Stats = () => {
                 { 
                     statsData.map((stat,i)=><div key={i}>
                         <p className="text-xl">{stat.label}</p>
-                        <p className="flex text-[110px] text-primary elegant mb-3"><AnimatedNumber n={stat.number}/>{stat.numberExtra}</p>
+                        <div className="flex text-[110px] text-primary elegant mb-3"><AnimatedNumber n={stat.number}/>{stat.numberExtra}</div>
                         <p className="font-medium text-gray-500 w-4/5">satisfied Client’s have trusted us with their cyber security need</p>
                     </div>)
                 }

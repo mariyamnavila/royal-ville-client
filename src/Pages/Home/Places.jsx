@@ -58,7 +58,7 @@ const Places = () => {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="text-center space-y-2.5">
-                <p className="text-primary text-xl"><AnimatedTextSimple>Moments That Make Memories</AnimatedTextSimple></p>
+                <div className="text-primary text-xl"><AnimatedTextSimple>Moments That Make Memories</AnimatedTextSimple></div>
                 <AnimatedText
                     text={"We're Dedicated To Providing You Unforgettable Experience. Whether You're Here For Business Or Leisure."}
                     className="text-neutral text-5xl md:w-2/3 mx-auto elegant font-bold"

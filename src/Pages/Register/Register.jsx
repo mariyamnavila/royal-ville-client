@@ -18,16 +18,16 @@ const Register = () => {
         const { email, password, name, photo } = Object.fromEntries(formData.entries());
 
         createUser(email, password)
-            .then(result => {
+            .then(res => {
                 updateUser({ displayName: name, photoURL: photo })
                     .then((result) => {
-                        setUser({ ...result.user, displayName: name, photoURL: photo })
+                        setUser({ ...res.user, displayName: name, photoURL: photo })
                         toast.success("User Registration Completed Successfully")
                     })
                     .catch((error) => {
                         setError(error)
                     })
-                console.log(result);
+                // console.log(result);
             })
             .catch((error) => {
                 setError(error.message)

@@ -13,7 +13,7 @@ const Reasons = () => {
                 <img className='absolute w-[200px] md:w-fit top-10 right-6 md:top-16 md:right-20 lg:top-36 lg:-right-30' src={reason2} alt="" />
             </div>
             <div className="space-y-3 lg:w-1/2 mx-7">
-                <p className="text-primary text-xl"><AnimatedTextSimple>Sleep in Style and Serenity</AnimatedTextSimple></p>
+                <div className="text-primary text-xl"><AnimatedTextSimple>Sleep in Style and Serenity</AnimatedTextSimple></div>
                 {/* <h3 ></h3> */}
                 <AnimatedText
                     text={'Luxury, Location & Love Reasons To Stay With Us'}
@@ -22,7 +22,7 @@ const Reasons = () => {
                 <p className="text-info mt-8 mb-14">Welcome to Royal Ville, your gateway to exceptional stays with premium comfort, modern amenities, and unmatched hospitality</p>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                     {
-                        arrayOfReasons.map(reason => <div className='bg-white rounded-full p-3 flex items-center gap-3 font-medium '>
+                        arrayOfReasons.map((reason,i) => <div key={i} className='bg-white rounded-full p-3 flex items-center gap-3 font-medium '>
                             <VscVerified className='text-primary text-3xl ml-2 font-bold' />
                             {reason}
                         </div>)

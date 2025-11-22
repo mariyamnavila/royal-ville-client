@@ -21,7 +21,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 toast.success("User logged in Successfully")
                 setUser(loggedUser);
-                console.log(result);
+                // console.log(result);
                 form.reset();
                 // navigate(`${location.state ? location.state : '/'}`);
             })

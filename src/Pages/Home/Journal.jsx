@@ -28,9 +28,9 @@ const Journal = () => {
             <div className="bg-[#f8eeda] py-20">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center space-y-6">
                     <div className="space-y-2.5 md:w-4/5">
-                        <p className="text-primary text-xl">
+                        <div className="text-primary text-xl">
                             <AnimatedTextSimple yOffset={40}>Our Guide to Luxury Travel</AnimatedTextSimple>
-                        </p>
+                        </div>
                         <h3 className="text-neutral text-5xl elegant font-bold ">From Our Journal: Travel Tips, Stories & More</h3>
                     </div>
                     <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-black mr-3 py-7 px-7 hover:text-success">
