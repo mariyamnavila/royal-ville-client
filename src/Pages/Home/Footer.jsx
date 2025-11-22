@@ -9,10 +9,10 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="text-white text-center pt-24 pb-16 text-6xl md:text-7xl elegant">
                     <AnimatedText
-                    text={'Book Your Dream Stay.'}
+                        text={'Book Your Dream Stay.'}
                     />
                     <AnimatedText
-                    text={'In Royal Ville'}
+                        text={'In Royal Ville'}
                     />
                     {/* <h1></h1>
                     <h1></h1> */}
@@ -25,7 +25,7 @@ const Footer = () => {
                             <button className="btn relative overflow-hidden group bg-primary border border-primary text-xl text-black mr-3 py-7 ">
                                 <span className="
                                     absolute inset-0 bg-[#FAF7F2] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-400 "></span>
-                                <span className="relative z-10 flex items-center">Sign Up <CiLocationArrow1  className='ml-2 font-bold'/></span>
+                                <span className="relative z-10 flex items-center">Sign Up <CiLocationArrow1 className='ml-2 font-bold' /></span>
                             </button>
                         </div>
                         <p className="text-white">By subscribing, you’re accept <span className="link text-primary hover:text-white transition duration-500 ease-in-out">Privacy Policy</span></p>
@@ -69,11 +69,11 @@ const Footer = () => {
                             <img className='bg-white p-2 w-[150px] ml-2 mt-3' src={logo} alt="" />
                         </aside>
                         <div className="flex text-2xl gap-7">
-                            <CiFacebook className='text-white hover:text-primary hover:link transition duration-500 ease-in-out '/>
-                            <CiTwitter className='text-white hover:text-primary hover:link transition duration-500 ease-in-out '/>
-                            <CiInstagram className='text-white hover:text-primary hover:link transition duration-500 ease-in-out '/>
-                            <FaYoutube className='text-white hover:text-primary hover:link transition duration-500 ease-in-out '/>
-                            <FaDribbble className='text-white hover:text-primary hover:link transition duration-500 ease-in-out '/>
+                            <CiFacebook className='text-white hover:text-primary hover:link transition duration-500 ease-in-out ' />
+                            <CiTwitter className='text-white hover:text-primary hover:link transition duration-500 ease-in-out ' />
+                            <CiInstagram className='text-white hover:text-primary hover:link transition duration-500 ease-in-out ' />
+                            <FaYoutube className='text-white hover:text-primary hover:link transition duration-500 ease-in-out ' />
+                            <FaDribbble className='text-white hover:text-primary hover:link transition duration-500 ease-in-out ' />
                         </div>
                         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                             <p>Copyright © {new Date().getFullYear()} - All right reserved</p>

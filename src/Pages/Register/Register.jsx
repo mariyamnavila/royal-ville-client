@@ -1,8 +1,54 @@
 import { FcGoogle } from 'react-icons/fc';
 import registerImage from '../../assets/register.jpg';
 import { Link } from 'react-router-dom';
+import AnimatedTextSimple from '../../Components/AnimatedTextSimple';
+import AnimatedText from '../../Components/AnimatedText';
+import { AuthContext } from '../../Contexts/AuthContext';
+import { use, useState } from 'react';
+import { googleProvider } from '../../Provider/googleProvider';
+import { toast } from 'sonner';
 
 const Register = () => {
+    const { createUser, updateUser, setUser, user, setLoading, signInWithGoogle } = use(AuthContext)
+    const [error, setError] = useState(null)
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const form = e.target
+        const formData = new FormData(form);
+        const { email, password, name, photo } = Object.fromEntries(formData.entries());
+
+        createUser(email, password)
+            .then(result => {
+                updateUser({ displayName: name, photoURL: photo })
+                    .then((result) => {
+                        setUser({ ...result.user, displayName: name, photoURL: photo })
+                        toast.success("User Registration Completed Successfully")
+                    })
+                    .catch((error) => {
+                        setError(error)
+                    })
+                console.log(result);
+            })
+            .catch((error) => {
+                setError(error.message)
+            })
+            .finally(() => setLoading(false))
+    }
+
+    const handleGoogleSignIn = (provider) => {
+        signInWithGoogle(provider)
+            .then(result => {
+                const name = result?.user?.displayName
+                const photo = result?.user?.photoURL
+                setUser({ ...user, displayName: name, photoURL: photo })
+                // navigate(`${location.state ? location.state : '/'}`);
+            })
+            .catch((error) => {
+                setError(error.code)
+            })
+            .finally(() => toast.success("User Registration Completed Successfully"))
+    }
+
     return (
         <div className="flex justify-center items-center min-h-screen my-8">
             <div>
@@ -10,13 +56,17 @@ const Register = () => {
             </div>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
                 <div>
-                    <p className="font-medium text-xs text-center mb-3 text-accent">Register </p>
-                    <h2 className="font-semibold text-3xl text-center mx-5 text-">Start for from Today</h2>
+                    <div className="font-medium text-xs text-center mb-3 text-accent"><AnimatedTextSimple>Register</AnimatedTextSimple> </div>
+                    <AnimatedText
+                        text={'Start for from Today'}
+                        className="font-semibold text-3xl text-center mx-5 text-primary"
+                    />
+                    {/* <h2 ></h2> */}
                     <form
-                        // onSubmit={handleRegister}
+                        onSubmit={handleRegister}
                         className="card-body">
                         <button
-                            // onClick={() => { handleGoogleSignIn(googleProvider) }} 
+                            onClick={() => { handleGoogleSignIn(googleProvider) }}
                             className="btn w-full bg-success text-primary flex items-center"><FcGoogle />  Login with Google</button>
                         <div className="divider text-xs">Or continue with </div>
                         <fieldset className="fieldset">
@@ -59,10 +109,10 @@ const Register = () => {
                                 placeholder="Enter your password"
                                 required
                             />
-                            {/* {
-                                error && <p className="text-red-500 text-xs">{error}</p>
-                            } */}
-                            <button type="submit" className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-white">
+                            {
+                                error && toast.error(`${error}`)
+                            }
+                            <button type="submit" className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-white mt-3 mr-4">
                                 <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-250"></span>
                                 <span className="relative z-10">Register</span>
                             </button>

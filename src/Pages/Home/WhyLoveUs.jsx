@@ -1,4 +1,4 @@
-import { motion, useMotionValueEvent, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import whyLoveUs1 from '../../assets/whyLoveUs1.jpg';
 import whyLoveUs2 from '../../assets/whyLoveUs2.jpg';
 import whyLoveUs3 from '../../assets/whyLoveUs3.jpg';

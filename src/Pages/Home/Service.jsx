@@ -8,8 +8,9 @@ const Service = () => {
             <div className="space-y-2.5 ml-7 lg:w-4/5">
                 <p className="text-primary text-xl"><AnimatedTextSimple>Driven by Service, Inspired by You</AnimatedTextSimple></p>
                 <AnimatedText
-                text={"We Don’t Just Manage Rooms – We Tell Jokes, Drink Coffee, And Dance When No One’s Watching!"}
-                className="text-neutral text-5xl elegant font-bold "
+                    text={"We Don’t Just Manage Rooms – We Tell Jokes, Drink Coffee, And Dance When No One’s Watching!"}
+                    className="text-neutral text-5xl elegant font-bold "
+                    wordStagger={0.5}
                 />
                 <h3 ></h3>
             </div>
