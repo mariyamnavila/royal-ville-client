@@ -10,7 +10,7 @@ const WhyLoveUsCard = ({ card }) => {
             <img className='rounded-xl w-full md:w-60 md:h-[313px] object-cover' src={image} alt="" />
             <div>
                 <p className='text-2xl font-light'>{text}</p>
-                <div className='flex flex-col md:flex-row items-center justify-between mt-14'>
+                <div className='flex flex-col md:flex-row items-center justify-between lg:mt-14 md:mt-5 mt-5'>
                     <div className='flex flex-col'>
                         <h5 className='text-2xl font-medium'>{name}</h5>
                         <p className='text-info'>{position}</p>

@@ -4,7 +4,7 @@ import AnimatedText from "../../Components/AnimatedText";
 
 const Banner = () => {
     return (
-        <div className="bg-[url('./assets/banner.jpg')] bg-center">
+        <div className="bg-[url('./assets/banner.jpg')] bg-center bg-cover">
             <div className="bg-linear-to-b from-black to-[#0000008e]">
                 <div className="pt-[200px] pb-[260px] max-w-7xl mx-auto">
                     <h5 className="text-white text-2xl elegant">Discover refined comfort in an elegant space.</h5>

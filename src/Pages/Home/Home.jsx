@@ -8,6 +8,7 @@ import Select from "./Select";
 import Service from "./Service";
 import SpecialOffer from "./SpecialOffer";
 import Stats from "./Stats";
+import TopRooms from "./TopRooms";
 import WhyLoveUs from "./WhyLoveUs";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             <Select></Select>
             <Places></Places>
             <Map></Map>
+            <TopRooms></TopRooms>
             <SpecialOffer></SpecialOffer>
             <Service></Service>
             <Stats></Stats>

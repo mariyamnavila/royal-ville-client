@@ -10,7 +10,6 @@ const Service = () => {
                 <AnimatedText
                     text={"We Don’t Just Manage Rooms – We Tell Jokes, Drink Coffee, And Dance When No One’s Watching!"}
                     className="text-neutral text-5xl elegant font-bold "
-                    wordStagger={0.3}
                 />
                 <h3 ></h3>
             </div>

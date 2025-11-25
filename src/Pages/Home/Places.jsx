@@ -62,7 +62,6 @@ const Places = () => {
                 <AnimatedText
                     text={"We're Dedicated To Providing You Unforgettable Experience. Whether You're Here For Business Or Leisure."}
                     className="text-neutral text-5xl md:w-2/3 mx-auto elegant font-bold"
-                    wordStagger={0.5}
                 />
                 {/* <h3 className="text-neutral text-5xl md:w-4/5 mx-auto elegant font-bold">We're Dedicated To Providing You Unforgettable Experience. Whether You're Here For Business Or Leisure.</h3> */}
             </div>

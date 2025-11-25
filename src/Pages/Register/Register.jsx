@@ -17,6 +17,18 @@ const Register = () => {
         const formData = new FormData(form);
         const { email, password, name, photo } = Object.fromEntries(formData.entries());
 
+        if (password.length < 6) {
+            setError('Password should be 6 character or longer');
+            return;
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+            setError('at least one uppercase, at least one lowercase and length has to be at least 6 characters');
+            return
+        }
+
         createUser(email, password)
             .then(res => {
                 updateUser({ displayName: name, photoURL: photo })

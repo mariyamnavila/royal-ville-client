@@ -28,8 +28,8 @@ const Map = () => {
                 center={position}
                 zoom={15}
                 scrollWheelZoom={false}
-                style={{ height: "450px", width: "100%" }}
-                className="mx-7 mt-10 mb-20 rounded-xl"
+                style={{ height: "450px",}}
+                className=" mt-10 mb-20 rounded-xl w-full"
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
