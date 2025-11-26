@@ -25,7 +25,7 @@ const Journal = () => {
                     <h1 className="text-[#b99d75] text-8xl flex mr-6 "><MdOutlineBedroomChild className='mr-6' /> Luxury hotel & Resort</h1>
                 </Marquee>
             </div>
-            <div className="bg-[#f8eeda] py-20">
+            <div className="bg-secondary py-20">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center space-y-6">
                     <div className="space-y-2.5 md:w-4/5">
                         <div className="text-primary text-xl">

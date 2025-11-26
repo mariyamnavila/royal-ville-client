@@ -9,7 +9,7 @@ const TopRooms = () => {
     console.log(topRatedRooms);
 
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto" id='top'>
             <div className="text-center space-y-2.5">
                 <div className="text-primary text-xl"><AnimatedTextSimple>Top Stays, Unforgettable Moments</AnimatedTextSimple></div>
                 <AnimatedText
@@ -17,10 +17,9 @@ const TopRooms = () => {
                     className="text-neutral text-5xl md:w-4/5 mx-auto elegant font-bold"
                 />
             </div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                {topRatedRooms.map((room) => (
-                    <TopRoomCard key={room.id} room={room} />
-                ))
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 mb-14 mx-7">
+                {
+                    topRatedRooms?.map((room) => <TopRoomCard key={room._id} room={room} />)
                 }
             </div>
         </div>

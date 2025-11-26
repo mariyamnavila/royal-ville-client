@@ -17,10 +17,10 @@ const Banner = () => {
                         className="text-white text-7xl elegant mb-9"
                         delay={0.3}
                     />
-                    <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-black mr-3 py-7 px-7">
+                    <a href="#top" className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-black mr-3 py-7 px-7">
                         <span className="absolute inset-0 bg-[#FAF7F2] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-350 "></span>
                         <span className="relative z-10 flex items-center">Book Today <MdArrowOutward className="text-xl ml-3" /></span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ import 'leaflet/dist/leaflet.css';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <Toaster richColors position="bottom-right"/>
+      <Toaster richColors position="bottom-right" />
       <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>,

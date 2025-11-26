@@ -106,7 +106,7 @@ const WhyLoveUs = () => {
                     return (
                         <div
                             key={i}
-                            className="sticky top-0 h-[400px] flex justify-center"
+                            className="sticky top-20 h-[400px] flex justify-center"
                             // style={{
                             //     scale: isLast ? 1 : cardAnimations[i].scale,   
                             //     opacity: cardAnimations[i].opacity,            

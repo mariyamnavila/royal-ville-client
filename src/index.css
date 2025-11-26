@@ -6,14 +6,19 @@
   name: "light";
   default: true;
    --color-primary: #D6A23F; 
-  /* --color-secondary: #3d9970; */
+  --color-secondary: #f8eeda;
   /* --color-base-100: #f4f9f7; */
   --color-base-200: #BFBFBF;
    --color-base-300: #8c8c8c;
   --color-info: #676764;
   --color-neutral: #1A1A1A; 
-  --color-accent: #D32F2F;
+  /* --color-accent: #D32F2F#B22222; */
+  --color-accent: #d6573f;
   --color-success: #FAF7F2; 
+}
+
+html { 
+  scroll-behavior: smooth; 
 }
 
 .active {

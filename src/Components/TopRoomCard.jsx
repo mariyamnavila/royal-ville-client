@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const TopRoomCard = ({ room }) => {
@@ -10,18 +11,25 @@ const TopRoomCard = ({ room }) => {
             <div className="text-center">
                 <h3 className="text-2xl font-bold mt-4 text-center text-primary">{roomName}</h3>
                 <p className="my-2 text-base-300 text-[14px]">{description}</p>
-                <p className="text-accent mb-2">Price: {pricePerNight}$/Per Night</p>
-                <button className="btn relative w-full overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-white">
-                    <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-250"></span>
-                    <span className="relative z-10">Book Now</span>
-                </button>
-                <div className="flex items-center justify-between mt-2">
-                    <p className="text-accent text-[14px]"><span className="font-medium">Price:</span> {pricePerNight}$/Per Night</p>
-                    <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-white btn-sm">
-                        <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-350"></span>
+                <p className="text-lg text-accent mb-3 font-extrabold">
+                    <span className="text-info font-semibold">Price: </span>
+                    {pricePerNight}$/Night
+                </p>
+                <Link to={`/rooms/${room._id}`}>
+                    <button className="btn relative w-full overflow-hidden group bg-primary border border-primary text-white">
+                        <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-250"></span>
                         <span className="relative z-10">Book Now</span>
                     </button>
-                </div>
+                </Link>
+                {/* <div className="flex items-center justify-between mt-2">
+                    <p className="text-accent text-[14px]"><span className="font-medium">Price:</span> {pricePerNight}$/Per Night</p>
+                    <Link to={`/rooms/${room._id}`}>
+                        <button className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-white btn-sm">
+                            <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-350"></span>
+                            <span className="relative z-10">Book Now</span>
+                        </button>
+                    </Link>
+                </div> */}
             </div>
         </div>
     );
