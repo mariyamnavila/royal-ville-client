@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 
 const Register = () => {
     const { createUser, updateUser, setUser, user, setLoading, signInWithGoogle } = use(AuthContext)
-    const [error, setError] = useState(null)
+    // const [error, setError] = useState(null)
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target
@@ -42,7 +42,7 @@ const Register = () => {
                 // console.log(result);
             })
             .catch((error) => {
-                setError(error.message)
+                toast.error(error.message);
             })
             .finally(() => setLoading(false))
     }
@@ -56,10 +56,15 @@ const Register = () => {
                 // navigate(`${location.state ? location.state : '/'}`);
             })
             .catch((error) => {
-                setError(error.code)
+                toast.error(error.message);
             })
             .finally(() => toast.success("User Registration Completed Successfully"))
     }
+
+    // if (error) {
+    //     toast.error(error);
+    //     setError(null); // Clear the error after displaying the toast
+    // }
 
     return (
         <div className="flex justify-center items-center min-h-screen my-8">
@@ -121,9 +126,9 @@ const Register = () => {
                                 placeholder="Enter your password"
                                 required
                             />
-                            {
+                            {/* {
                                 error && toast.error(`${error}`)
-                            }
+                            } */}
                             <button type="submit" className="btn relative overflow-hidden group bg-[#D6A23F] border border-[#D6A23F] text-xl text-white mt-3 mr-4">
                                 <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-250"></span>
                                 <span className="relative z-10">Register</span>

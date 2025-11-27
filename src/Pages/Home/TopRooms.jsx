@@ -6,7 +6,6 @@ import TopRoomCard from '../../Components/TopRoomCard';
 const TopRooms = () => {
 
     const topRatedRooms = useLoaderData();
-    console.log(topRatedRooms);
 
     return (
         <div className="max-w-7xl mx-auto" id='top'>

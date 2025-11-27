@@ -10,7 +10,7 @@ const Navbar = () => {
     // console.log(user?.photoURL);
     const links = <>
         <li><NavLink to={'/'} className={'font-semibold text-[18px]'}>Home</NavLink></li>
-        <li><NavLink to={'/allRecipes'} className={'font-semibold text-[18px]'}>All Rooms</NavLink></li>
+        <li><NavLink to={'/allRooms'} className={'font-semibold text-[18px]'}>Rooms</NavLink></li>
         {/* {
             user ? (
                 <>

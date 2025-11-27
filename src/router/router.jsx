@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import RoomDetails from "../Pages/RoomDetails/RoomDetails";
 import Loader from "../Pages/Loader/Loader";
+import Rooms from '../Pages/Rooms/Rooms';
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +16,12 @@ export const router = createBrowserRouter([
                 index: true,
                 Component: Home,
                 loader: () => fetch('http://localhost:3000/rooms/top-rated'),
+                hydrateFallbackElement: <Loader></Loader>,
+            },
+            {
+                path: '/allRooms',
+                Component: Rooms,
+                loader: () => fetch(`http://localhost:3000/rooms`),
                 hydrateFallbackElement: <Loader></Loader>,
             },
             {
