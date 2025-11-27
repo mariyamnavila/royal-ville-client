@@ -37,7 +37,7 @@ const Register = () => {
                         toast.success("User Registration Completed Successfully")
                     })
                     .catch((error) => {
-                        setError(error)
+                        toast.error(error)
                     })
                 // console.log(result);
             })
@@ -69,9 +69,9 @@ const Register = () => {
     return (
         <div className="flex justify-center items-center min-h-screen my-8">
             <div>
-                <img className="w-[500px] h-[640px] object-cover lg:block hidden shadow-2xl rounded-md" src={registerImage} alt="" />
+                <img className="w-[500px] h-[640px] object-cover lg:block hidden shadow-2xl rounded-md lg:rounded-r-none" src={registerImage} alt="" />
             </div>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5  lg:rounded-l-none">
                 <div>
                     <div className="font-medium text-xs text-center mb-3 text-accent"><AnimatedTextSimple>Register</AnimatedTextSimple> </div>
                     <AnimatedText

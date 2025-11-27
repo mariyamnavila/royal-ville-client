@@ -5,8 +5,8 @@ const TopRoomCard = ({ room }) => {
     const { roomName, image, description, pricePerNight } = room;
     return (
         <div className="p-6 flex flex-col border border-primary/60 rounded-lg hover:shadow-md transform transition duration-300 hover:-translate-y-1">
-            <div>
-                <img className="w-full h-[250px] object-cover rounded-lg" src={image} alt="" />
+            <div className="overflow-hidden rounded-lg">
+                <img className="w-full h-[250px] hover:scale-115 transform transition duration-350 object-cover rounded-lg" src={image} alt="" />
             </div>
             <div className="text-center">
                 <h3 className="text-2xl font-bold mt-4 text-center text-primary">{roomName}</h3>

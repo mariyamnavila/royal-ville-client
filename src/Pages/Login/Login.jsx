@@ -3,14 +3,14 @@ import loginImage from '../../assets/login.jpg';
 import { Link } from "react-router-dom";
 import AnimatedTextSimple from "../../Components/AnimatedTextSimple";
 import AnimatedText from "../../Components/AnimatedText";
-import { use, useState } from "react";
+import { use } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { googleProvider } from "../../Provider/googleProvider";
 import { toast } from "sonner";
 
 const Login = () => {
     // const [error, setError] = useState(null);
-    const { signIn, setUser, user, setLoading, signInWithGoogle } = use(AuthContext);
+    const { signIn, setUser, setLoading, signInWithGoogle } = use(AuthContext);
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -53,11 +53,11 @@ const Login = () => {
     return (
         <div className="flex justify-center items-center min-h-screen my-8">
             <div>
-                <img className="w-[500px] h-[500px] object-cover lg:block hidden shadow-2xl rounded-md"
+                <img className="w-[500px] h-[500px] object-cover lg:block hidden shadow-2xl rounded-md lg:rounded-r-none"
                     src={loginImage}
                     alt="" />
             </div>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5 lg:rounded-l-none">
 
                 <div className="font-medium text-xs text-center mb-3 text-accent"><AnimatedTextSimple>Welcome Back!</AnimatedTextSimple></div>
                 <AnimatedText

@@ -45,7 +45,7 @@ const AnimatedText = ({ text, className = "", delay = 0, stagger = 0.05, wordSta
                 <motion.div
                     key={wordIndex}
                     variants={wordContainer}
-                    className="inline-block mr-2 overflow-hidden" // Added mr-2 for spacing and overflow-hidden for cleaner entrance
+                    className="inline-block mr-2 mb-1" // Added mr-2 for spacing and overflow-hidden for cleaner entrance
                 >
                     {/* Split each word into characters */}
                     {word.split("").map((char, charIndex) => (

@@ -3,11 +3,11 @@ import logo from '../../assets/royal-ville-logo.png';
 import { use } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { toast } from "sonner";
+import avatar from '../../assets/UserAvatar.png';
 
 const Navbar = () => {
 
     const { user, logOut, setLoading } = use(AuthContext)
-    // console.log(user?.photoURL);
     const links = <>
         <li><NavLink to={'/'} className={'font-semibold text-[18px]'}>Home</NavLink></li>
         <li><NavLink to={'/allRooms'} className={'font-semibold text-[18px]'}>Rooms</NavLink></li>
@@ -27,10 +27,8 @@ const Navbar = () => {
         logOut()
             .then((result) => {
                 toast.success('User successfully logged out')
-                // console.log(result);
             })
             .catch(error => {
-                // console.log(error);
                 toast.error(error.message)
             })
             .finally(() => setLoading(false))
@@ -42,7 +40,11 @@ const Navbar = () => {
                 user ? (
                     <>
                         <div>
-                            <img className='w-16 h-16 rounded-full mx-auto' src={user.photoURL} alt={user.displayName} />
+                            <img 
+                            className='w-16 h-16 rounded-full mx-auto' 
+                            src={user.photoURL || avatar} 
+                            onError={(e) => (e.target.src = avatar)} 
+                            alt={user.displayName} />
                         </div>
                         <p className='text-center text-2xl font-semibold text-primary mt-1'>{user.displayName}</p>
                         <p className="text-center text-info mt-1 mb-3">{user.email}</p>
@@ -101,10 +103,20 @@ const Navbar = () => {
                         user ? (
                             <div className='lg:flex hidden'>
                                 <div className="dropdown dropdown-end ">
-                                    <div tabIndex={0} role="button" className=""><img className='w-10 h-10 rounded-full mr-4' src={user.photoURL} alt={user.displayName} /></div>
+                                    <div tabIndex={0} role="button" className="">
+                                        <img 
+                                        className='w-10 h-10 rounded-full mr-4' 
+                                        src={user.photoURL || avatar} 
+                                        onError={(e) => (e.target.src = avatar)} 
+                                        alt={user.displayName} />
+                                        </div>
                                     <div tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-fit p-2 shadow-sm ">
                                         <div>
-                                            <img className='w-16 h-16 rounded-full mx-auto' src={user.photoURL} alt={user.displayName} />
+                                            <img 
+                                            className='w-16 h-16 rounded-full mx-auto' 
+                                            src={user.photoURL || avatar} 
+                                            onError={(e) => (e.target.src = avatar)} 
+                                            alt={user.displayName} />
                                         </div>
                                         <p className='text-center text-2xl font-semibold text-primary mt-1'>{user.displayName}</p>
                                         <p className="text-center text-info mt-1 mb-3">{user.email}</p>

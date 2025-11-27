@@ -6,6 +6,7 @@ import { router } from './router/router'
 import AuthProvider from './Provider/AuthProvider'
 import { Toaster } from 'sonner'
 import 'leaflet/dist/leaflet.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

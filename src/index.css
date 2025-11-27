@@ -37,3 +37,15 @@ body{
   font-family: "Cormorant", serif;
   font-style: normal;
 }
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker {
+  font-size: 14px;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc !important;
+}
