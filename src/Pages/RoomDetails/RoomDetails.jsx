@@ -10,18 +10,19 @@ import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { IoIosArrowBack, IoIosArrowForward, IoIosArrowRoundBack } from "react-icons/io";
-import { use, useState } from "react";
-import { AuthContext } from "../../Contexts/AuthContext";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import getDatesInRange from "../../Components/getDatesInRange";
 
 const RoomDetails = () => {
 
     const [selectedDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
-    const { user } = use(AuthContext);
+    const { user } = useAuth();
     const room = useLoaderData();
     const navigate = useNavigate();
     const { _id,
@@ -36,7 +37,8 @@ const RoomDetails = () => {
         reviews,
         disabledDates } = room;
 
-        const mainDisabledDates = disabledDates.map(dateStr => new Date(dateStr));
+    const [roomAvailability, setRoomAvailability] = useState(availability);
+    const mainDisabledDates = disabledDates?.map(dateStr => new Date(dateStr));
 
     const latestReviews = reviews ? [...reviews].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)) : [];
 
@@ -50,15 +52,6 @@ const RoomDetails = () => {
         // Further booking logic can be added here
     }
 
-    const getDatesInRange = (startDate, endDate) => {
-        const dates = [];
-        const currentDate = new Date(startDate);
-        while (currentDate <= endDate) {
-            dates.push(new Date(currentDate)); // store as Date object
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-        return dates;
-    };
 
 
     const handleConfirmBooking = () => {
@@ -71,30 +64,45 @@ const RoomDetails = () => {
             customer_name: user.displayName,
             checkInDate: selectedDate,
             checkOutDate: endDate,
-            availability: 'unavailable',
-            disabledDates: updatedDisabledDates,
+            // disabledDates: updatedDisabledDates,
+            specificBookedDates: bookedDates,
         };
-        axios.patch(`http://localhost:3000/rooms/${_id}`, bookingDetails)
+
+        axios.post('http://localhost:3000/bookings', { ...bookingDetails, roomId: _id })
             .then(response => {
-                console.log('Booking successful:', response.data);
-                Swal.fire({
-                    icon: "success",
-                    title: "Booked!",
-                    text: "Your room has been booked",
-                    showConfirmButton: false,
-                    timer: 1500,
-                    topLayer: true,
-                })
+
+                if (response.data.insertedId) {
+                    axios.patch(`http://localhost:3000/rooms/${_id}`, { availability: 'unavailable', disabledDates: updatedDisabledDates, })
+                        .then(response => {
+                            // console.log('Booking successful:', response.data);
+                            if (response.data.modifiedCount > 0) {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Booked!",
+                                    text: "Your room has been booked",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    topLayer: true,
+                                })
+                                setRoomAvailability('unavailable');
+                                setTimeout(() => {
+                                    navigate('/myBookings');
+                                }, 2000);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error booking the room:', error);
+                        });
+                }
+
             })
             .catch(error => {
-                console.error('Error booking the room:', error);
+                console.error('There was an error creating the booking!', error);
             });
-        // Logic to confirm booking can be added here
 
-        console.log(selectedDate, endDate);
+
     }
 
-console.log(disabledDates);
     return (
         <div className="max-w-7xl mx-auto">
             <div className="text-center my-16 space-y-4">
@@ -177,7 +185,7 @@ console.log(disabledDates);
             <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:mb-28">
                 <div className="bg-secondary p-12 space-y-4">
                     <p className="text-3xl font-semibold mb-7">Features</p>
-                    {features.map((feature, index) => (
+                    {features?.map((feature, index) => (
                         <div key={index} className="flex items-center gap-3">
                             <span className="w-3 h-3 bg-primary rounded-full"></span>
                             <p>{feature}</p>
@@ -190,8 +198,8 @@ console.log(disabledDates);
                     <div>
                         <p className="text-3xl font-semibold pt-3 mb-3">Availability</p>
                         <p className="flex items-center">
-                            <img src={availability === 'available' ? availableSVG : unavailableSVG} className="w-5 mr-2" />
-                            {availability}
+                            <img src={roomAvailability === 'available' ? availableSVG : unavailableSVG} className="w-5 mr-2" />
+                            {roomAvailability}
                         </p>
                     </div>
                     <div className="pt-3 text-3xl">

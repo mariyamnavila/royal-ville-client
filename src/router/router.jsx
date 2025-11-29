@@ -6,6 +6,9 @@ import Register from "../Pages/Register/Register";
 import RoomDetails from "../Pages/RoomDetails/RoomDetails";
 import Loader from "../Pages/Loader/Loader";
 import Rooms from '../Pages/Rooms/Rooms';
+import MyBookings from "../Pages/MyBookings/MyBookings";
+import useAuth from "../hooks/useAuth";
+
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +28,10 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loader></Loader>,
             },
             {
+                path: '/myBookings',
+                Component: MyBookings,
+            },
+            {
                 path: '/rooms/:id',
                 Component: RoomDetails,
                 loader: ({ params }) => fetch(`http://localhost:3000/rooms/${params.id}`),
@@ -41,4 +48,3 @@ export const router = createBrowserRouter([
         ]
     },
 ]);
-

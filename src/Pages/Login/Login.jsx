@@ -3,14 +3,13 @@ import loginImage from '../../assets/login.jpg';
 import { Link } from "react-router-dom";
 import AnimatedTextSimple from "../../Components/AnimatedTextSimple";
 import AnimatedText from "../../Components/AnimatedText";
-import { use } from "react";
-import { AuthContext } from "../../Contexts/AuthContext";
 import { googleProvider } from "../../Provider/googleProvider";
 import { toast } from "sonner";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
     // const [error, setError] = useState(null);
-    const { signIn, setUser, setLoading, signInWithGoogle } = use(AuthContext);
+    const { signIn, setUser, setLoading, signInWithGoogle } = useAuth();
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;

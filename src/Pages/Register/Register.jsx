@@ -3,13 +3,12 @@ import registerImage from '../../assets/register.jpg';
 import { Link } from 'react-router-dom';
 import AnimatedTextSimple from '../../Components/AnimatedTextSimple';
 import AnimatedText from '../../Components/AnimatedText';
-import { AuthContext } from '../../Contexts/AuthContext';
-import { use, useState } from 'react';
 import { googleProvider } from '../../Provider/googleProvider';
 import { toast } from 'sonner';
+import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { createUser, updateUser, setUser, user, setLoading, signInWithGoogle } = use(AuthContext)
+    const { createUser, updateUser, setUser, user, setLoading, signInWithGoogle } = useAuth()
     // const [error, setError] = useState(null)
     const handleRegister = (e) => {
         e.preventDefault();
@@ -18,14 +17,14 @@ const Register = () => {
         const { email, password, name, photo } = Object.fromEntries(formData.entries());
 
         if (password.length < 6) {
-            setError('Password should be 6 character or longer');
+            toast.error('Password should be 6 character or longer');
             return;
         }
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
         if (!passwordRegex.test(password)) {
-            setError('at least one uppercase, at least one lowercase and length has to be at least 6 characters');
+            toast.error('at least one uppercase, at least one lowercase and length has to be at least 6 characters');
             return
         }
 

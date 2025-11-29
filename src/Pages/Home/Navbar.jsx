@@ -1,26 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/royal-ville-logo.png';
-import { use } from "react";
-import { AuthContext } from "../../Contexts/AuthContext";
 import { toast } from "sonner";
 import avatar from '../../assets/UserAvatar.png';
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
 
-    const { user, logOut, setLoading } = use(AuthContext)
+    const { user, logOut, setLoading } = useAuth();
     const links = <>
         <li><NavLink to={'/'} className={'font-semibold text-[18px]'}>Home</NavLink></li>
         <li><NavLink to={'/allRooms'} className={'font-semibold text-[18px]'}>Rooms</NavLink></li>
-        {/* {
+        {
             user ? (
                 <>
-                    <li><NavLink to={'/addRecipes'} className={'font-semibold text-[18px]'}>Add Recipes</NavLink></li>
+                    <li><NavLink to={'/myBookings'} className={'font-semibold text-[18px]'}>My Bookings</NavLink></li>
                 </>
             ) : (
                 <>
                 </>
             )
-        } */}
+        }
     </>
 
     const handleLogOut = () => {
