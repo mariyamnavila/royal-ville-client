@@ -4,8 +4,13 @@ import { MdOutlineUpdate } from "react-icons/md";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import useAuth from "../../hooks/useAuth";
+import Rating from "react-rating";
+import { GoStar, GoStarFill } from "react-icons/go";
 
-const BookedCard = ({ room, handleCancelBooking, handleUpdateBooking }) => {
+const BookedCard = ({ room, handleCancelBooking, handleUpdateBooking, handleReview }) => {
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
+    const maxLength = 180;
     const { user } = useAuth();
     const { _id: roomId, roomName, description, pricePerNight, image, disabledDates, customersDetails } = room;
 
@@ -46,7 +51,7 @@ const BookedCard = ({ room, handleCancelBooking, handleUpdateBooking }) => {
                     <MdOutlineUpdate className="text-xl" />
                     Update Booking Date
                 </button>
-                {/* modal content start */}
+                {/* update modal content start */}
                 <dialog id={`my_updateModal_${roomId}`} className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box space-y-3">
                         <div>
@@ -89,7 +94,7 @@ const BookedCard = ({ room, handleCancelBooking, handleUpdateBooking }) => {
                                 {/* <button className="btn">Close</button> */}
                                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 <button
-                                    onClick={() => handleUpdateBooking(roomId, selectedDate, endDate, removeBookedDatesFromDisabled,customerId)}
+                                    onClick={() => handleUpdateBooking(roomId, selectedDate, endDate, removeBookedDatesFromDisabled, customerId)}
                                     className="btn relative block mx-auto overflow-hidden group bg-primary border border-primary text-white mb-14 w-full mt-3">
                                     <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-350"></span>
                                     <span className="relative z-10">Update</span>
@@ -98,12 +103,66 @@ const BookedCard = ({ room, handleCancelBooking, handleUpdateBooking }) => {
                         </div>
                     </div>
                 </dialog>
-                {/* modal content end */}
+                {/* update modal content end */}
                 <button
+                    onClick={() => document.getElementById(`my_reviewModal_${roomId}`).showModal()}
                     className="btn btn-outline border-2 border-[#658fde] text-[#658fde] hover:bg-[#658fde] hover:text-white mt-4 w-fit flex gap-2 items-center ">
                     <MdOutlineReviews className="text-xl" />
                     Give Review
                 </button>
+                {/* give review modal content start */}
+                <dialog id={`my_reviewModal_${roomId}`} className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box space-y-3">
+                        <h3 className="font-semibold text-xl text-center mt-8">Give review for <br /> <span className="text-primary">{roomName}</span></h3>
+                        {/* <p className="text-info text-[14px] text-center">{description}</p>
+                        <p className="text-info text-center">Price: <span className="font-medium">{pricePerNight}$/night</span></p> */}
+                        <form onSubmit={(e) => handleReview(e, rating, roomId, user.photoURL)}>
+                            <fieldset className="w-full">
+                                <label className="px-1 text-lg text-info">Name</label>
+                                <input readOnly value={user.displayName || ''} type="text" name="username" placeholder="" className="w-full border border-gray-300 rounded-md px-3 py-3 outline-none focus:border-primary mt-2 mb-2 text-black" />
+                            </fieldset>
+                            <fieldset className="w-full">
+                                <label className="px-1 text-lg text-info">Comment</label>
+                                <input
+                                    type="text" onChange={(e) => setComment(e.target.value)}
+                                    maxLength={maxLength}
+                                    name="comment"
+                                    placeholder="Your comment"
+                                    className="w-full border border-gray-300 rounded-md px-3 py-3 outline-none focus:border-primary bg-white mt-2 mb-2" 
+                                    required/>
+                            </fieldset>
+                            <div className="text-right text-sm text-gray-500 mt-1">
+                                {comment.length} / {maxLength} characters
+                            </div>
+                            <fieldset className="w-full flex flex-col">
+                                <label className="px-1 text-lg text-info">Rating</label>
+                                <div className="flex gap-2">
+                                    <Rating
+                                        className="mt-2"
+                                        emptySymbol={<GoStar className="text-2xl text-base-200" />}
+                                        fullSymbol={<GoStarFill className='text-2xl text-primary' />}
+                                        fractions={4}
+                                        onChange={(value) => setRating(value)}
+                                    />
+                                </div>
+                            </fieldset>
+                            <button
+                                type="submit"
+                                className="btn relative block mx-auto overflow-hidden group bg-primary border border-primary text-white w-full mt-3">
+                                <span className="absolute inset-0 bg-[#1A1A1A] transform scale-y-0 transition-transform duration-300 ease-out origin-center rotate-120 group-hover:scale-y-350"></span>
+                                <span className="relative z-10">Submit Review</span>
+                            </button>
+                        </form>
+                        <div className="modal-action mt-0">
+                            <form method="dialog" className="w-full">
+                                {/* if there is a button in form, it will close the modal */}
+                                {/* <button className="btn">Close</button> */}
+                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+                {/* give review modal content end */}
                 <button
                     onClick={() => handleCancelBooking(roomId, removeBookedDatesFromDisabled, customerId)}
                     className="btn btn-outline border-2 border-accent hover:bg-accent hover:text-white text-accent mt-4 w-fit flex gap-2 items-center">

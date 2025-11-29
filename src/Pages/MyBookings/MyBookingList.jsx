@@ -82,13 +82,13 @@ const MyBookingList = ({ myBookingPromise }) => {
         // Future implementation for updating booking dates
         axios.patch(`http://localhost:3000/rooms/${id}`, updateRoom)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
 
                 if (response.data.modifiedCount > 0) {
 
                     axios.patch(`http://localhost:3000/bookings/${customerId}`, updateUserDetails)
                         .then(res => {
-                            console.log("PATCH response:", res.data);
+                            // console.log("PATCH response:", res.data);
 
                             if (res.data.modifiedCount > 0) {
                                 Swal.fire({
@@ -101,7 +101,7 @@ const MyBookingList = ({ myBookingPromise }) => {
                                 })
                             }
                         })
-                        .catch(error=>{
+                        .catch(error => {
                             console.log(error);
                         })
                 }
@@ -109,6 +109,44 @@ const MyBookingList = ({ myBookingPromise }) => {
             .catch(error => {
                 console.error('There was an error updating the booking!', error);
             });
+    }
+
+    const handleReview = (e, rating, roomId, profilePicture) => {
+        e.preventDefault()
+        const form = e.target
+        const formData = new FormData(form);
+        const { username, comment } = Object.fromEntries(formData.entries());
+        const timestamp = new Date().toISOString().split('.')[0] + "Z";
+
+        const reviewInfo = {
+            roomId: roomId,
+            username: username,
+            profilePicture: profilePicture,
+            rating: rating,
+            comment: comment,
+            timestamp: timestamp
+        }
+
+        axios.post('http://localhost:3000/reviews', reviewInfo)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Review Submitted!",
+                        text: "Your Review has been submitted",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        topLayer: true,
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+
+        // const { userName, rating, comment, timestamp } = review;
+        // console.log(review);
     }
 
     return (
@@ -122,8 +160,9 @@ const MyBookingList = ({ myBookingPromise }) => {
                         <BookedCard
                             key={room._id}
                             room={room}
-                            handleCancelBooking={handleCancelBooking}
                             handleUpdateBooking={handleUpdateBooking}
+                            handleReview={handleReview}
+                            handleCancelBooking={handleCancelBooking}
                         />
                     ))}
                 </div>
