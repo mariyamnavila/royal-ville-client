@@ -48,7 +48,7 @@ const Rooms = () => {
 
         axios.get(`http://localhost:3000/rooms?min=${min}&max=${max}`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setRooms(res.data);
             })
             .catch(err => {

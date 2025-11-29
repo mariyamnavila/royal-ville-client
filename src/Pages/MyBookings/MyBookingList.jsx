@@ -2,13 +2,14 @@ import axios from "axios";
 import { use, useState } from "react";
 import Swal from "sweetalert2";
 import BookedCard from "./BookedCard";
+import getDatesInRange from "../../Components/getDatesInRange";
 
 
 const MyBookingList = ({ myBookingPromise }) => {
     const initialBookings = use(myBookingPromise)
     const [bookedRooms, setBookedRooms] = useState(initialBookings);
 
-    const handleCancelBooking = (id, disabledDates,customerId) => {
+    const handleCancelBooking = (id, disabledDates, customerId) => {
 
         const afterCancelInfo = {
             availability: 'available',
@@ -43,7 +44,7 @@ const MyBookingList = ({ myBookingPromise }) => {
                                             icon: "success"
                                         });
                                     }
-                                    
+
                                 })
                                 .catch(error => {
                                     console.log(error);
@@ -62,6 +63,54 @@ const MyBookingList = ({ myBookingPromise }) => {
 
     }
 
+    const handleUpdateBooking = (id, startDate, endDate, removeBookedDatesFromDisabled, customerId) => {
+        const bookedDates = getDatesInRange(startDate, endDate);
+
+        const updatedDisabledDates = [...(removeBookedDatesFromDisabled || []), ...bookedDates];
+
+        const updateUserDetails = {
+            specificBookedDates: bookedDates,
+            checkInDate: startDate,
+            checkOutDate: endDate
+        }
+
+        const updateRoom = {
+            availability: 'unavailable',
+            disabledDates: updatedDisabledDates
+        }
+
+        // Future implementation for updating booking dates
+        axios.patch(`http://localhost:3000/rooms/${id}`, updateRoom)
+            .then(response => {
+                console.log(response.data);
+
+                if (response.data.modifiedCount > 0) {
+
+                    axios.patch(`http://localhost:3000/bookings/${customerId}`, updateUserDetails)
+                        .then(res => {
+                            console.log("PATCH response:", res.data);
+
+                            if (res.data.modifiedCount > 0) {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Date Updated",
+                                    text: "Your booking date has been updated",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    topLayer: true,
+                                })
+                            }
+                        })
+                        .catch(error=>{
+                            console.log(error);
+                        })
+                }
+            })
+            .catch(error => {
+                console.error('There was an error updating the booking!', error);
+            });
+    }
+
     return (
         <div className="mb-20">
             {/* Booked rooms will be displayed here in the future */}
@@ -74,7 +123,7 @@ const MyBookingList = ({ myBookingPromise }) => {
                             key={room._id}
                             room={room}
                             handleCancelBooking={handleCancelBooking}
-                        // handleUpdateBooking={handleUpdateBooking}
+                            handleUpdateBooking={handleUpdateBooking}
                         />
                     ))}
                 </div>
